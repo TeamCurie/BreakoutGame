@@ -31,23 +31,7 @@ namespace Breakout
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo pressedKey = Console.ReadKey();
-
-                    if (pressedKey.Key == ConsoleKey.LeftArrow)
-                    {
-                        playerPositionX = playerPositionX - 2;
-                        if (playerPositionX < 0)
-                        {
-                            playerPositionX = 0;
-                        }
-                    }
-                    else if (pressedKey.Key == ConsoleKey.RightArrow)
-                    {
-                        playerPositionX = playerPositionX + 2;
-                        if (playerPositionX > PlaygroundWidth - PaddleWidth - 1)
-                        {
-                            playerPositionX = PlaygroundWidth - PaddleWidth - 1;
-                        }
-                    }
+                    playerPositionX = ChangePaddlePosition(playerPositionX, pressedKey);
                 }
 
                 Console.Clear();
@@ -55,6 +39,28 @@ namespace Breakout
                 DrawBall(ballPositionX, ballPositionY);
                 Thread.Sleep(100);
             }
+        }
+
+        private static int ChangePaddlePosition(int playerPositionX, ConsoleKeyInfo pressedKey)
+        {
+            if (pressedKey.Key == ConsoleKey.LeftArrow)
+            {
+                playerPositionX = playerPositionX - 2;
+                if (playerPositionX < 0)
+                {
+                    playerPositionX = 0;
+                }
+            }
+            else if (pressedKey.Key == ConsoleKey.RightArrow)
+            {
+                playerPositionX = playerPositionX + 2;
+                if (playerPositionX > PlaygroundWidth - PaddleWidth - 1)
+                {
+                    playerPositionX = PlaygroundWidth - PaddleWidth - 1;
+                }
+            }
+
+            return playerPositionX;
         }
 
         private static void DrawPaddle(int playerPositionX)
