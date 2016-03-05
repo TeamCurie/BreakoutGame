@@ -153,6 +153,7 @@
         {
             DrawPaddle();
             DrawBall();
+            DrawWall();
 
             while (true)
             {
@@ -166,6 +167,7 @@
                 Console.Clear();
                 DrawPaddle();
                 DrawBall();
+                DrawWall();
                 Thread.Sleep(75);
             }
         }
@@ -296,6 +298,59 @@
         {
             Console.SetCursorPosition(ballPositionX, ballPositionY);
             Console.Write(BallSymbol);
+        }
+
+        private static void DrawWall()
+        {
+            Console.SetCursorPosition(0, 1);
+            Brick[] bricks = new Brick[PlaygroundWidth * 4];
+            int numBricks = 0;
+
+            // Build a wall of bricks
+            numBricks = 0;
+
+            for (int row = 0; row < PlaygroundWidth * 4; row++)
+            {
+                bricks[numBricks] = new Brick(row);
+                numBricks++;
+            }
+
+            for (int i = 0; i < numBricks; i++)
+            {
+                if (bricks[i].getVisibility())
+                {
+                    Console.Write(bricks[i].getSymbol());
+                }
+            }
+        }
+    }
+
+
+    internal class Brick
+    {
+        private char symbol;
+
+        private bool isVisible;
+
+        public Brick(int row)
+        {
+            isVisible = true;
+            symbol = '#';
+        }
+
+        public char getSymbol()
+        {
+            return this.symbol;
+        }
+
+        public void setInvisible()
+        {
+            isVisible = false;
+        }
+
+        public bool getVisibility()
+        {
+            return isVisible;
         }
     }
 }
