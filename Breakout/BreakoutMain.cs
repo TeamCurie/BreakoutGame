@@ -11,13 +11,15 @@
         private const char BallSymbol = '*';
 
         private static int paddlePositionX = 18; //Paddle x-coordinate starting position; y-coordinate is always PlaygroundHeight - 2
-        //(i.e. bottom of the screen).
-        
+                                                 //(i.e. bottom of the screen).
+
         private static int ballPositionX = paddlePositionX + 3; //Ball x-coordinate starting position.
         private static int ballPositionY = PlaygroundHeight - 2; //Ball y-coordinate starting position.
 
         //Valid predefined ball directions: 0 - up, 1 - up left, 2 - up right, 3 - down, 4 - down right, 5 - down left.
         private static int ballDirection = 0;
+
+        private static Brick[] bricks = new Brick[PlaygroundWidth * 4];
 
         public static void Main()
         {
@@ -167,8 +169,8 @@
                 Console.Clear();
                 DrawPaddle();
                 DrawBall();
-                DrawWall();
-                Thread.Sleep(75);
+                UpdateWall();
+                Thread.Sleep(50);
             }
         }
 
@@ -263,8 +265,37 @@
                     ballDirection = 5; // From downward right direction the ball bounces off downward left.
                 }
             }
+            
+            // Detect collisions with the wall
+            int wallHeight = 4;
+
+            if (ballPositionY <= wallHeight)
+            {
+                for (int i = 0; i < bricks.Length; i++)
+                {
+                    if (ballPositionX == bricks[i].PositionX && ballPositionY == bricks[i].PositionY
+                        && bricks[i].getVisibility())
+                    {
+                        bricks[i].setInvisible();
+
+                        if (ballDirection == 0)
+                        {
+                            ballDirection = 3; // From upward direction the ball bounces off downward.
+                        }
+                        else if (ballDirection == 2)
+                        {
+                            ballDirection = 4; // From upward right direction the ball bounces off downward right.
+                        }
+                        else if (ballDirection == 1)
+                        {
+                            ballDirection = 5; // From upward right direction the ball bounces off downward right.
+                        }
+                    }
+                }
+            }
+
         }
-        
+
         private static void ChangePaddlePosition(ConsoleKeyInfo pressedKey)
         {
             if (pressedKey.Key == ConsoleKey.LeftArrow)
@@ -303,24 +334,28 @@
         private static void DrawWall()
         {
             Console.SetCursorPosition(0, 1);
-            Brick[] bricks = new Brick[PlaygroundWidth * 4];
+
             int numBricks = 0;
 
             // Build a wall of bricks
             numBricks = 0;
-
-            for (int row = 0; row < PlaygroundWidth * 4; row++)
+            for (int row = 1; row <= 4; row++)
             {
-                bricks[numBricks] = new Brick(row);
-                numBricks++;
-            }
-
-            for (int i = 0; i < numBricks; i++)
-            {
-                if (bricks[i].getVisibility())
+                for (int column = 0; column < PlaygroundWidth; column++)
                 {
-                    Console.Write(bricks[i].getSymbol());
+                    bricks[numBricks] = new Brick(row, column);
+                    numBricks++;
                 }
+            }
+        }
+
+        private static void UpdateWall()
+        {
+            Console.SetCursorPosition(0, 1);
+
+            for (int i = 0; i < bricks.Length; i++)
+            {
+                Console.Write(bricks[i].getSymbol());
             }
         }
     }
@@ -332,11 +367,18 @@
 
         private bool isVisible;
 
-        public Brick(int row)
+        public Brick(int positionY, int positionX)
         {
             isVisible = true;
             symbol = '#';
+
+            this.PositionY = positionY;
+            this.PositionX = positionX;
         }
+
+        public int PositionX { get; set; }
+
+        public int PositionY { get; set; }
 
         public char getSymbol()
         {
@@ -346,6 +388,7 @@
         public void setInvisible()
         {
             isVisible = false;
+            this.symbol = ' ';
         }
 
         public bool getVisibility()
