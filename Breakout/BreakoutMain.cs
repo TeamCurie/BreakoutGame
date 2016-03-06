@@ -309,9 +309,9 @@
             else if (pressedKey.Key == ConsoleKey.RightArrow)
             {
                 paddlePositionX = paddlePositionX + 2;
-                if (paddlePositionX > PlaygroundWidth - PaddleWidth - 1)
+                if (paddlePositionX > PlaygroundWidth - PaddleWidth)
                 {
-                    paddlePositionX = PlaygroundWidth - PaddleWidth - 1;
+                    paddlePositionX = PlaygroundWidth - PaddleWidth;
                 }
             }
         }
