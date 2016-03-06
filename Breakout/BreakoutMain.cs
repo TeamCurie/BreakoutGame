@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading;
+    using Enums;
 
     public class BreakoutMain
     {
@@ -16,8 +17,7 @@
         private static int ballPositionX = paddlePositionX + 3; //Ball x-coordinate starting position.
         private static int ballPositionY = PlaygroundHeight - 2; //Ball y-coordinate starting position.
 
-        //Valid predefined ball directions: 0 - up, 1 - up left, 2 - up right, 3 - down, 4 - down right, 5 - down left.
-        private static int ballDirection = 0;
+        private static Directions ballDirection = Directions.Up;
 
         private static Brick[] bricks = new Brick[PlaygroundWidth * 4];
 
@@ -178,25 +178,25 @@
         {
             switch (ballDirection)
             {
-                case 0: // Up
+                case Directions.Up: // Up
                     ballPositionY--;
                     break;
-                case 1: // Up left
+                case Directions.UpAndLeft: // Up left
                     ballPositionX--;
                     ballPositionY--;
                     break;
-                case 2: // Up right
+                case Directions.UpAndRight: // Up right
                     ballPositionX++;
                     ballPositionY--;
                     break;
-                case 3: // Down
+                case Directions.Down: // Down
                     ballPositionY++;
                     break;
-                case 4: // Down right
+                case Directions.DownAndRight: // Down right
                     ballPositionX++;
                     ballPositionY++;
                     break;
-                case 5: // Down left
+                case Directions.DownAndLeft: // Down left
                     ballPositionX--;
                     ballPositionY++;
                     break;
@@ -207,17 +207,17 @@
                 if ((ballPositionX >= paddlePositionX + 2) &&
                     (ballPositionX <= paddlePositionX + 4)) // The middle 3 "_" symbols.
                 {
-                    ballDirection = 0; // Bouncing up.
+                    ballDirection = Directions.Up; // Bouncing up.
                 }
                 else if ((ballPositionX >= paddlePositionX) &&
                     (ballPositionX <= paddlePositionX + 1)) // The left 2 "_" symbols.
                 {
-                    ballDirection = 1; // Bouncing up and to the left.
+                    ballDirection = Directions.UpAndLeft; // Bouncing up and to the left.
                 }
                 else if ((ballPositionX >= paddlePositionX + 5) &&
                     (ballPositionX <= paddlePositionX + 6)) // The right 2 "_" symbols.
                 {
-                    ballDirection = 2; // Bouncing up and to the right.
+                    ballDirection = Directions.UpAndRight; // Bouncing up and to the right.
                 }
                 else
                 {
@@ -228,41 +228,41 @@
 
             if (ballPositionY == 0) // When the ball hits the ceiling.
             {
-                if (ballDirection == 0)
+                if (ballDirection == Directions.Up)
                 {
-                    ballDirection = 3; // From upward direction the ball bounces off downward.
+                    ballDirection = Directions.Down; // From upward direction the ball bounces off downward.
                 }
-                else if (ballDirection == 2)
+                else if (ballDirection == Directions.UpAndRight)
                 {
-                    ballDirection = 4; // From upward right direction the ball bounces off downward right.
+                    ballDirection = Directions.DownAndRight; // From upward right direction the ball bounces off downward right.
                 }
-                else if (ballDirection == 1)
+                else if (ballDirection == Directions.UpAndLeft)
                 {
-                    ballDirection = 5; // From upward right direction the ball bounces off downward right.
+                    ballDirection = Directions.DownAndLeft; // From upward left direction the ball bounces off downward left.
                 }
             }
 
             if (ballPositionX == 0) // When the ball hits the left wall.
             {
-                if (ballDirection == 1)
+                if (ballDirection == Directions.UpAndLeft)
                 {
-                    ballDirection = 2; // From upward left direction the ball bounces off upward right.
+                    ballDirection = Directions.UpAndRight; // From upward left direction the ball bounces off upward right.
                 }
-                else if (ballDirection == 5)
+                else if (ballDirection == Directions.DownAndLeft)
                 {
-                    ballDirection = 4; // From downward left direction the ball bounces off downward right.
+                    ballDirection = Directions.DownAndRight; // From downward left direction the ball bounces off downward right.
                 }
             }
 
             if (ballPositionX == PlaygroundWidth - 1) // When the ball hits the right wall.
             {
-                if (ballDirection == 2)
+                if (ballDirection == Directions.UpAndRight)
                 {
-                    ballDirection = 1; // From upward right direction the ball bounces off upward left.
+                    ballDirection = Directions.UpAndLeft; // From upward right direction the ball bounces off upward left.
                 }
-                else if (ballDirection == 4)
+                else if (ballDirection == Directions.DownAndRight)
                 {
-                    ballDirection = 5; // From downward right direction the ball bounces off downward left.
+                    ballDirection = Directions.DownAndLeft; // From downward right direction the ball bounces off downward left.
                 }
             }
             
@@ -278,17 +278,17 @@
                     {
                         bricks[i].setInvisible();
 
-                        if (ballDirection == 0)
+                        if (ballDirection == Directions.Up)
                         {
-                            ballDirection = 3; // From upward direction the ball bounces off downward.
+                            ballDirection = Directions.Down; // From upward direction the ball bounces off downward.
                         }
-                        else if (ballDirection == 2)
+                        else if (ballDirection == Directions.UpAndRight)
                         {
-                            ballDirection = 4; // From upward right direction the ball bounces off downward right.
+                            ballDirection = Directions.DownAndRight; // From upward right direction the ball bounces off downward right.
                         }
-                        else if (ballDirection == 1)
+                        else if (ballDirection == Directions.UpAndLeft)
                         {
-                            ballDirection = 5; // From upward right direction the ball bounces off downward right.
+                            ballDirection = Directions.DownAndLeft; // From upward left direction the ball bounces off downward left.
                         }
                     }
                 }
