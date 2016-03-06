@@ -17,6 +17,8 @@
         private static int ballPositionX = paddlePositionX + 3; //Ball x-coordinate starting position.
         private static int ballPositionY = PlaygroundHeight - 2; //Ball y-coordinate starting position.
 
+        private static int gameSpeed = 100;
+
         private static Directions ballDirection = Directions.Up;
 
         private static Brick[] bricks = new Brick[PlaygroundWidth * 4];
@@ -28,6 +30,38 @@
             Console.WindowHeight = PlaygroundHeight;
             Console.BufferHeight = Console.WindowHeight;
             Console.BufferWidth = Console.WindowWidth;
+
+            while (true)
+            {
+                MainMenu();
+            }
+        }
+
+        private static void GameStart()
+        {
+            DrawPaddle();
+            DrawBall();
+            DrawWall();
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo pressedKey = Console.ReadKey();
+                    ChangePaddlePosition(pressedKey);
+                }
+
+                ChangeBallPosition();
+                Console.Clear();
+                DrawPaddle();
+                DrawBall();
+                UpdateWall();
+                Thread.Sleep(gameSpeed);
+            }
+        }
+
+        private static void MainMenu()
+        {
             int curChoiceOption = 1;
 
             while (true)
@@ -59,7 +93,7 @@
                 }
 
                 Console.SetCursorPosition(35, 14);
-                Console.WriteLine("1. Start new game ");
+                Console.WriteLine("Start new game ");
 
                 if (curChoiceOption == 2)
                 {
@@ -71,7 +105,7 @@
                 }
 
                 Console.SetCursorPosition(35, 15);
-                Console.WriteLine("2. Options ");
+                Console.WriteLine("Options ");
 
                 if (curChoiceOption == 3)
                 {
@@ -83,7 +117,7 @@
                 }
 
                 Console.SetCursorPosition(35, 16);
-                Console.WriteLine("3. Highscores ");
+                Console.WriteLine("Highscores ");
 
                 if (curChoiceOption == 4)
                 {
@@ -95,7 +129,7 @@
                 }
 
                 Console.SetCursorPosition(35, 17);
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("Exit");
 
                 // end of the long coloring
                 var cki = Console.ReadKey(); // getting a button press
@@ -139,7 +173,7 @@
             }
             else if (curChoiceOption == 2)
             {
-                Console.WriteLine("Options Menu"); // not yet implemented
+                Options(); // not yet implemented
             }
             else if (curChoiceOption == 3)
             {
@@ -151,26 +185,134 @@
             }
         }
 
-        private static void GameStart()
+        private static void Options()
         {
-            DrawPaddle();
-            DrawBall();
-            DrawWall();
+            int curChoiceOption = 1;
 
             while (true)
             {
-                if (Console.KeyAvailable)
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.SetCursorPosition(22, 5);
+                Console.WriteLine(" _____       _   _                 ");
+                Console.SetCursorPosition(22, 6);
+                Console.WriteLine("|  _  |     | | (_)                ");
+                Console.SetCursorPosition(22, 7);
+                Console.WriteLine("| | | |_ __ | |_ _  ___  _ __  ___ ");
+                Console.SetCursorPosition(22, 8);
+                Console.WriteLine("| | | | '_ \\| __| |/ _ \\| '_ \\/ __|");
+                Console.SetCursorPosition(22, 9);
+                Console.WriteLine("\\ \\_/ / |_) | |_| | (_) | | | \\__ \\");
+                Console.SetCursorPosition(22, 10);
+                Console.WriteLine(" \\___/| .__/ \\__|_|\\___/|_| |_|___/");
+                Console.SetCursorPosition(22, 11);
+                Console.WriteLine("      | |                          ");
+                Console.SetCursorPosition(22, 12);
+                Console.WriteLine("      |_|                          ");
+                Console.SetCursorPosition(22, 13);
+
+                // all it does is coloring the current highlighted answer and printing the answers
+                Console.SetCursorPosition(35, 13);
+                Console.WriteLine("Game speed: ");
+                if (curChoiceOption == 1)
                 {
-                    ConsoleKeyInfo pressedKey = Console.ReadKey();
-                    ChangePaddlePosition(pressedKey);
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
-                ChangeBallPosition();
+                Console.SetCursorPosition(35, 14);
+                Console.WriteLine("x0.5");
+
+                if (curChoiceOption == 2)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.SetCursorPosition(35, 15);
+                Console.WriteLine("x1");
+
+                if (curChoiceOption == 3)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.SetCursorPosition(35, 16);
+                Console.WriteLine("x2");
+
+                if (curChoiceOption == 4)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.SetCursorPosition(35, 17);
+                Console.WriteLine("Back");
+
+                // end of the long coloring
+                var cki = Console.ReadKey(); // getting a button press
+                // highlighting another desired option if an arrow is pressed
+                if (cki.Key == ConsoleKey.DownArrow)
+                {
+                    if (curChoiceOption + 1 <= 4)
+                    {
+                        curChoiceOption += 1;
+                    }
+                    else
+                    {
+                        curChoiceOption = 1;
+                    }
+                }
+                else if (cki.Key == ConsoleKey.UpArrow)
+                {
+                    if (curChoiceOption - 1 >= 1)
+                    {
+                        curChoiceOption -= 1;
+                    }
+                    else
+                    {
+                        curChoiceOption = 4;
+                    }
+                }
+                else if (cki.Key == ConsoleKey.Enter) // breaking and leaving option validation in the outer loop
+                {
+                    break;
+                }
+
+                // clearing screen
                 Console.Clear();
-                DrawPaddle();
-                DrawBall();
-                UpdateWall();
-                Thread.Sleep(50);
+            }
+
+            Console.Clear();
+
+            if (curChoiceOption == 1)
+            {
+                gameSpeed = 200;
+            }
+            else if (curChoiceOption == 2)
+            {
+                gameSpeed = 100; // not yet implemented
+            }
+            else if (curChoiceOption == 3)
+            {
+                gameSpeed = 50; // not yet implemented
+            }
+            else if (curChoiceOption == 4)
+            {
+                return;
             }
         }
 
