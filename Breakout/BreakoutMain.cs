@@ -1,6 +1,7 @@
 ﻿namespace Breakout
 {
     using System;
+    using System.Runtime.CompilerServices;
     using System.Threading;
     using Enums;
     using Models;
@@ -22,7 +23,8 @@
 
         private static Directions ballDirection = Directions.Up;
 
-        private static Brick[] bricks = new Brick[PlaygroundWidth * 4];
+        //private static Brick[] bricks = new Brick[PlaygroundWidth * 4];
+        private static Wall wallOfBricks;
 
         public static void Main()
         {
@@ -40,9 +42,12 @@
 
         private static void GameStart()
         {
+            wallOfBricks = new Wall(4, PlaygroundWidth);
+
             DrawPaddle();
             DrawBall();
-            DrawWall();
+
+            wallOfBricks.DrawWall();
 
             while (true)
             {
@@ -56,7 +61,7 @@
                 Console.Clear();
                 DrawPaddle();
                 DrawBall();
-                UpdateWall();
+                wallOfBricks.UpdateWall();
                 Thread.Sleep(gameSpeed);
             }
         }
@@ -408,38 +413,43 @@
                     ballDirection = Directions.DownAndLeft; // From downward right direction the ball bounces off downward left.
                 }
             }
-            
+
             // Detect collisions with the wall
-            int wallHeight = 4;
-
-            if (ballPositionY <= wallHeight)
+            if (ballPositionY <= wallOfBricks.Height)
             {
-                for (int i = 0; i < bricks.Length; i++)
+                for (int i = 0; i < wallOfBricks.Height; i++)
                 {
-                    if (ballPositionX == bricks[i].PositionX && ballPositionY == bricks[i].PositionY
-                        && bricks[i].getVisibility())
+                    for (int j = 0; j < wallOfBricks.Width; j++)
                     {
-                        bricks[i].setInvisible();
+                        if (ballPositionX == wallOfBricks.FilledWall[i,j].PositionX && ballPositionY == wallOfBricks.FilledWall[i, j].PositionY
+                            && wallOfBricks.FilledWall[i, j].getVisibility())
+                        {
+                            wallOfBricks.FilledWall[i, j].setInvisible();
 
-                        if (ballDirection == Directions.Up)
-                        {
-                            ballDirection = Directions.Down; // From upward direction the ball bounces off downward.
-                        }
-                        else if (ballDirection == Directions.UpAndRight)
-                        {
-                            ballDirection = Directions.DownAndRight; // From upward right direction the ball bounces off downward right.
-                        }
-                        else if (ballDirection == Directions.UpAndLeft)
-                        {
-                            ballDirection = Directions.DownAndLeft; // From upward left direction the ball bounces off downward left.
-                        }
-                        else if (ballDirection == Directions.DownAndLeft)
-                        {
-                            ballDirection = Directions.UpAndLeft; // From downward left direction the ball bounces off upward left.
-                        }
-                        else if (ballDirection == Directions.DownAndRight)
-                        {
-                            ballDirection = Directions.UpAndRight; // From downward right direction the ball bounces off upward right.
+                            if (ballDirection == Directions.Up)
+                            {
+                                ballDirection = Directions.Down; // From upward direction the ball bounces off downward.
+                            }
+                            else if (ballDirection == Directions.UpAndRight)
+                            {
+                                ballDirection = Directions.DownAndRight;
+                                // From upward right direction the ball bounces off downward right.
+                            }
+                            else if (ballDirection == Directions.UpAndLeft)
+                            {
+                                ballDirection = Directions.DownAndLeft;
+                                // From upward left direction the ball bounces off downward left.
+                            }
+                            else if (ballDirection == Directions.DownAndLeft)
+                            {
+                                ballDirection = Directions.UpAndLeft;
+                                // From downward left direction the ball bounces off upward left.
+                            }
+                            else if (ballDirection == Directions.DownAndRight)
+                            {
+                                ballDirection = Directions.UpAndRight;
+                                // From downward right direction the ball bounces off upward right.
+                            }
                         }
                     }
                 }
@@ -481,7 +491,7 @@
             Console.SetCursorPosition(ballPositionX, ballPositionY);
             Console.Write(BallSymbol);
         }
-
+        /*
         private static void DrawWall()
         {
             Console.SetCursorPosition(0, 1);
@@ -499,7 +509,8 @@
                 }
             }
         }
-
+        */
+        /*
         private static void UpdateWall()
         {
             Console.SetCursorPosition(0, 1);
@@ -509,5 +520,6 @@
                 Console.Write(bricks[i].getSymbol());
             }
         }
+        */
     }
 }

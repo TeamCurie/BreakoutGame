@@ -1,6 +1,8 @@
 ﻿namespace Breakout.Models
 {
-    internal class Brick
+    using Contracts;
+
+    internal class Brick : IBrick
     {
         private char symbol;
 

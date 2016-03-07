@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BreakoutMain.cs" />
+    <Compile Include="Contracts\IBrick.cs" />
     <Compile Include="Contracts\IGamer.cs" />
     <Compile Include="Enums\Directions.cs" />
     <Compile Include="Gamer.cs" />
     <Compile Include="Models\Brick.cs" />
+    <Compile Include="Models\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Score.cs" />
   </ItemGroup>
