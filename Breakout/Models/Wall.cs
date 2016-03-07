@@ -5,11 +5,12 @@
 
     internal class Wall : IWall
     {
-        public Wall(int height, int width)
+        public Wall(int height, int width, IFillingPattern pattern)
         {
             this.Height = height;
             this.Width = width;
             this.FilledWall = new IBrick[height, width];
+            this.FillingPattern = pattern;
         }
 
         public int Height { get; }
@@ -18,17 +19,11 @@
 
         public IBrick[,] FilledWall { get; }
 
+        public IFillingPattern FillingPattern { get; }
+
         public void DrawWall()
         {
-            Console.SetCursorPosition(0, 1);
-
-            for (int row = 0; row < this.Height; row++)
-            {
-                for (int column = 0; column < this.Width; column++)
-                {
-                    FilledWall[row,column] = new Brick(row, column);
-                }
-            }
+            FillingPattern.FillWall(this);
         }
 
         public void UpdateWall()

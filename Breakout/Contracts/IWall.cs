@@ -8,6 +8,8 @@
 
         IBrick[,] FilledWall { get; }
 
+        IFillingPattern FillingPattern { get; }
+
         void DrawWall();
 
         void UpdateWall();

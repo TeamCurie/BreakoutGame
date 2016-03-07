@@ -49,7 +49,8 @@
     <Compile Include="Enums\Directions.cs" />
     <Compile Include="Gamer.cs" />
     <Compile Include="Models\Brick.cs" />
-    <Compile Include="Models\Pattern.cs" />
+    <Compile Include="Models\Patterns\BasicPattern.cs" />
+    <Compile Include="Models\Patterns\ZigZagPattern.cs" />
     <Compile Include="Models\Wall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Score.cs" />

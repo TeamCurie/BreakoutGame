@@ -3,8 +3,10 @@
     using System;
     using System.Runtime.CompilerServices;
     using System.Threading;
+    using Contracts;
     using Enums;
     using Models;
+    using Models.Patterns;
 
     public class BreakoutMain
     {
@@ -23,8 +25,8 @@
 
         private static Directions ballDirection = Directions.Up;
 
-        //private static Brick[] bricks = new Brick[PlaygroundWidth * 4];
-        private static Wall wallOfBricks;
+        private static IWall wallOfBricks;
+        private static IFillingPattern fillingPattern;
 
         public static void Main()
         {
@@ -42,7 +44,10 @@
 
         private static void GameStart()
         {
-            wallOfBricks = new Wall(4, PlaygroundWidth);
+         //   fillingPattern = new BasicPattern();
+            fillingPattern = new ZigZagPattern();
+
+            wallOfBricks = new Wall(4, PlaygroundWidth, fillingPattern);
 
             DrawPaddle();
             DrawBall();
@@ -442,11 +447,16 @@
                 // From upward direction the ball bounces off downward.
                 ballDirection = Directions.Down; 
             }
+            else if (ballDirection == Directions.Down)
+            {
+                // From downward direction the ball bounces off upwards.
+                ballDirection = Directions.Up;
+            }
             else if (ballDirection == Directions.UpAndRight)
             {
                 // From upward right direction the ball bounces off downward right.
                 ballDirection = Directions.DownAndRight;
-            }
+            }          
             else if (ballDirection == Directions.UpAndLeft)
             {
                 // From upward left direction the ball bounces off downward left.
