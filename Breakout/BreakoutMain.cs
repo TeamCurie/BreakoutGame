@@ -433,6 +433,14 @@
                         {
                             ballDirection = Directions.DownAndLeft; // From upward left direction the ball bounces off downward left.
                         }
+                        else if (ballDirection == Directions.DownAndLeft)
+                        {
+                            ballDirection = Directions.UpAndLeft; // From downward left direction the ball bounces off upward left.
+                        }
+                        else if (ballDirection == Directions.DownAndRight)
+                        {
+                            ballDirection = Directions.UpAndRight; // From downward right direction the ball bounces off upward right.
+                        }
                     }
                 }
             }
