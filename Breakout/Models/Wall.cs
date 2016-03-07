@@ -3,7 +3,7 @@
     using System;
     using Contracts;
 
-    internal class Wall
+    internal class Wall : IWall
     {
         public Wall(int height, int width)
         {
@@ -12,11 +12,11 @@
             this.FilledWall = new IBrick[height, width];
         }
 
-        public int Height { get; set; }
+        public int Height { get; }
 
-        public int Width { get; set; }
+        public int Width { get; }
 
-        public IBrick[,] FilledWall { get; set; }
+        public IBrick[,] FilledWall { get; }
 
         public void DrawWall()
         {

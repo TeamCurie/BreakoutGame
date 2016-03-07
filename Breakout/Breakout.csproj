@@ -44,6 +44,7 @@
     <Compile Include="BreakoutMain.cs" />
     <Compile Include="Contracts\IBrick.cs" />
     <Compile Include="Contracts\IGamer.cs" />
+    <Compile Include="Contracts\IWall.cs" />
     <Compile Include="Enums\Directions.cs" />
     <Compile Include="Gamer.cs" />
     <Compile Include="Models\Brick.cs" />

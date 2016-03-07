@@ -421,40 +421,47 @@
                 {
                     for (int j = 0; j < wallOfBricks.Width; j++)
                     {
-                        if (ballPositionX == wallOfBricks.FilledWall[i,j].PositionX && ballPositionY == wallOfBricks.FilledWall[i, j].PositionY
-                            && wallOfBricks.FilledWall[i, j].getVisibility())
+                        if (ballPositionX == wallOfBricks.FilledWall[i,j].PositionX && 
+                            ballPositionY == wallOfBricks.FilledWall[i, j].PositionY &&
+                            wallOfBricks.FilledWall[i, j].getVisibility())
                         {
                             wallOfBricks.FilledWall[i, j].setInvisible();
 
-                            if (ballDirection == Directions.Up)
-                            {
-                                ballDirection = Directions.Down; // From upward direction the ball bounces off downward.
-                            }
-                            else if (ballDirection == Directions.UpAndRight)
-                            {
-                                ballDirection = Directions.DownAndRight;
-                                // From upward right direction the ball bounces off downward right.
-                            }
-                            else if (ballDirection == Directions.UpAndLeft)
-                            {
-                                ballDirection = Directions.DownAndLeft;
-                                // From upward left direction the ball bounces off downward left.
-                            }
-                            else if (ballDirection == Directions.DownAndLeft)
-                            {
-                                ballDirection = Directions.UpAndLeft;
-                                // From downward left direction the ball bounces off upward left.
-                            }
-                            else if (ballDirection == Directions.DownAndRight)
-                            {
-                                ballDirection = Directions.UpAndRight;
-                                // From downward right direction the ball bounces off upward right.
-                            }
+                            BallDirectionAfterWallCollision();
                         }
                     }
                 }
             }
 
+        }
+
+        private static void BallDirectionAfterWallCollision()
+        {
+            if (ballDirection == Directions.Up)
+            {
+                // From upward direction the ball bounces off downward.
+                ballDirection = Directions.Down; 
+            }
+            else if (ballDirection == Directions.UpAndRight)
+            {
+                // From upward right direction the ball bounces off downward right.
+                ballDirection = Directions.DownAndRight;
+            }
+            else if (ballDirection == Directions.UpAndLeft)
+            {
+                // From upward left direction the ball bounces off downward left.
+                ballDirection = Directions.DownAndLeft;
+            }
+            else if (ballDirection == Directions.DownAndLeft)
+            {
+                // From downward left direction the ball bounces off upward left.
+                ballDirection = Directions.UpAndLeft; 
+            }
+            else if (ballDirection == Directions.DownAndRight)
+            {
+                // From downward right direction the ball bounces off upward right.
+                ballDirection = Directions.UpAndRight;
+            }
         }
 
         private static void ChangePaddlePosition(ConsoleKeyInfo pressedKey)
@@ -491,35 +498,5 @@
             Console.SetCursorPosition(ballPositionX, ballPositionY);
             Console.Write(BallSymbol);
         }
-        /*
-        private static void DrawWall()
-        {
-            Console.SetCursorPosition(0, 1);
-
-            int numBricks = 0;
-
-            // Build a wall of bricks
-            numBricks = 0;
-            for (int row = 1; row <= 4; row++)
-            {
-                for (int column = 0; column < PlaygroundWidth; column++)
-                {
-                    bricks[numBricks] = new Brick(row, column);
-                    numBricks++;
-                }
-            }
-        }
-        */
-        /*
-        private static void UpdateWall()
-        {
-            Console.SetCursorPosition(0, 1);
-
-            for (int i = 0; i < bricks.Length; i++)
-            {
-                Console.Write(bricks[i].getSymbol());
-            }
-        }
-        */
     }
 }
