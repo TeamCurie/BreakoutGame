@@ -44,15 +44,14 @@
 
         private static void GameStart()
         {
-         //   fillingPattern = new BasicPattern();
+            // fillingPattern = new BasicPattern();
             fillingPattern = new ZigZagPattern();
 
             wallOfBricks = new Wall(4, PlaygroundWidth, fillingPattern);
 
             DrawPaddle();
-            DrawBall();
-
             wallOfBricks.DrawWall();
+            DrawBall();
 
             while (true)
             {
@@ -65,8 +64,8 @@
                 ChangeBallPosition();
                 Console.Clear();
                 DrawPaddle();
-                DrawBall();
                 wallOfBricks.UpdateWall();
+                DrawBall();
                 Thread.Sleep(gameSpeed);
             }
         }
@@ -426,9 +425,12 @@
                 {
                     for (int j = 0; j < wallOfBricks.Width; j++)
                     {
-                        if (ballPositionX == wallOfBricks.FilledWall[i,j].PositionX && 
-                            ballPositionY == wallOfBricks.FilledWall[i, j].PositionY &&
+                        if (ballPositionX == wallOfBricks.FilledWall[i, j].PositionX &&
+                            ballPositionY - 1 == wallOfBricks.FilledWall[i, j].PositionY &&
                             wallOfBricks.FilledWall[i, j].getVisibility())
+                        /* It has to be ballPositionY - 1 because j starts from 0,
+                        but the top wall row starts from console row 1.
+                        That's what's causing the collision problem*/
                         {
                             wallOfBricks.FilledWall[i, j].setInvisible();
 
