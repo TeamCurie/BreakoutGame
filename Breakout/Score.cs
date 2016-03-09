@@ -63,11 +63,11 @@
             }
         }
 
-        public void PrintHighScores()
+        public void PrintBestScores()
         {
-            Console.WriteLine("Score: ");
             if (this.topGamersRanklist.Count > 0)
             {
+                Console.SetCursorPosition(13, 16);
                 int i = 0;
                 foreach (var topGamer in this.topGamersRanklist.Reverse())
                 {
@@ -78,6 +78,7 @@
             }
             else
             {
+                Console.SetCursorPosition(35, 16);
                 Console.WriteLine("Empty ranklist!");
             }
         }

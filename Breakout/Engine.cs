@@ -1,8 +1,7 @@
 ﻿namespace Breakout
 {
     using System;
-    using System.Runtime.CompilerServices;
-    using System.Runtime.InteropServices.ComTypes;
+    using System.Net.Mime;
     using System.Threading;
     using Contracts;
     using Enums;
@@ -198,7 +197,7 @@
             }
             else if (curChoiceOption == 3)
             {
-                this.Score.PrintHighScores();
+                this.HighScoresMenue();
                 Environment.Exit(0);
             }
             else if (curChoiceOption == 4)
@@ -335,6 +334,102 @@
             else if (curChoiceOption == 4)
             {
                 return;
+            }
+        }
+
+        private void HighScoresMenue()
+        { 
+            int curChoiceOption = 1;
+
+            while (true)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.SetCursorPosition(13, 5);
+                Console.WriteLine(" _    _ _       _");
+                Console.SetCursorPosition(13, 6);
+                Console.WriteLine("| |  | (_)     | |                           _");
+                Console.SetCursorPosition(13, 7);
+                Console.WriteLine("| |__| |_  ___ | | __        ___   ___  ___ | | __ ___   ___");
+                Console.SetCursorPosition(13, 8);
+                Console.WriteLine("|  __  | |/ _ \\| |/_ \\      / __| / _| / _ \\| |/__/ _ \\ / __|");
+                Console.SetCursorPosition(13, 9);
+                Console.WriteLine("| |  | | | (_| | |  | |     \\__ \\| (_ | (_) | |  |  __ /\\__ \\");
+                Console.SetCursorPosition(13, 10);
+                Console.WriteLine("|_|  |_|_|\\__  |_|  |_|     |___/ \\__| \\___/|_|   \\___| |___/");
+                Console.SetCursorPosition(13, 11);
+                Console.WriteLine("             | |");
+                Console.SetCursorPosition(13, 12);
+                Console.WriteLine("            _| |");
+                Console.SetCursorPosition(13, 13);
+                Console.WriteLine("           \\___/");
+
+                this.Score.PrintBestScores();
+
+                if (curChoiceOption == 1)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.SetCursorPosition(40, 23);
+                Console.WriteLine("Back");
+
+                if (curChoiceOption == 2)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+
+                Console.SetCursorPosition(40, 24);
+                Console.WriteLine("Exit");
+
+                var cki = Console.ReadKey();
+
+                if (cki.Key == ConsoleKey.DownArrow)
+                {
+                    if (curChoiceOption + 1 <= 2)
+                    {
+                        curChoiceOption += 1;
+                    }
+                    else
+                    {
+                        curChoiceOption = 1;
+                    }
+                }
+                else if (cki.Key == ConsoleKey.UpArrow)
+                {
+                    if (curChoiceOption - 1 >= 1)
+                    {
+                        curChoiceOption -= 1;
+                    }
+                    else
+                    {
+                        curChoiceOption = 2;
+                    }
+                }
+                else if (cki.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+            }
+
+            Console.Clear();
+
+            if (curChoiceOption == 1)
+            {
+                Console.Clear();
+                this.MainMenu();
+            }
+            else
+            {
+                Environment.Exit(0);
             }
         }
 
