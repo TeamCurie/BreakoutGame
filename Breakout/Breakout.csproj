@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BreakoutMain.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="Contracts\IBrick.cs" />
     <Compile Include="Contracts\IFillingPattern.cs" />
     <Compile Include="Contracts\IGamer.cs" />

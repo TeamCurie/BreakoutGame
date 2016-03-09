@@ -37,5 +37,10 @@
                 Console.WriteLine("Empty ranklist!");
             }
         }
+
+        public void SaveScore()
+        {
+            
+        }
     }
 }
