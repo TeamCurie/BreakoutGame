@@ -45,7 +45,7 @@
 
             while (true)
             {
-                MainMenu();
+                this.MainMenu();
             }
         }
 
@@ -68,7 +68,7 @@
                     ChangePaddlePosition(pressedKey);
                 }
 
-                ChangeBallPosition();
+                this.ChangeBallPosition();
                 Console.Clear();
                 DrawPaddle();
                 wallOfBricks.UpdateWall();
@@ -188,17 +188,17 @@
             {
                 //Fixed out of range exeption when choose to continue to play (not to exit from the game)
                 paddlePositionX = 18;
-                ballPositionY = PlaygroundHeight - 3; 
+                ballPositionY = PlaygroundHeight - 3;
+                ballPositionX = paddlePositionX + 3;
                 this.GameStart();
             }
             else if (curChoiceOption == 2)
             {
-                Options(); // not yet implemented
+                this.Options(); // not yet implemented
             }
             else if (curChoiceOption == 3)
             {
                 this.HighScoresMenue();
-                Environment.Exit(0);
             }
             else if (curChoiceOption == 4)
             {
@@ -206,7 +206,7 @@
             }
         }
 
-        private static void Options()
+        private void Options()
         {
             int curChoiceOption = 1;
 
@@ -325,16 +325,15 @@
             }
             else if (curChoiceOption == 2)
             {
-                gameSpeed = 100; // not yet implemented
+                gameSpeed = 100;
             }
             else if (curChoiceOption == 3)
             {
-                gameSpeed = 50; // not yet implemented
+                gameSpeed = 50;
             }
-            else if (curChoiceOption == 4)
-            {
-                return;
-            }
+
+            Console.Clear();
+            this.MainMenu();
         }
 
         private void HighScoresMenue()
