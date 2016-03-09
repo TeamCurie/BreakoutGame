@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using Breakout.Contracts;
+    using Contracts;
 
     public class Score
     {
@@ -22,7 +22,7 @@
         }
 
         public IGamer CurrentGamer { get; }
-        
+
         public void SaveScore()
         {
             Console.Clear();
@@ -49,7 +49,7 @@
                 {
                     this.topGamersRanklist.Add(this.CurrentGamer.GamerPoints, this.CurrentGamer.GamerName);
                 }
-            } 
+            }
             else
             {
                 var ranklistContainsLowerResult = this.topGamersRanklist.Any(g => g.Key < this.CurrentGamer.GamerPoints);

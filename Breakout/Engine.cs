@@ -45,7 +45,7 @@
 
             while (true)
             {
-                MainMenu();
+                this.MainMenu();
             }
         }
 
@@ -68,7 +68,7 @@
                     ChangePaddlePosition(pressedKey);
                 }
 
-                ChangeBallPosition();
+                this.ChangeBallPosition();
                 Console.Clear();
                 DrawPaddle();
                 wallOfBricks.UpdateWall();
@@ -189,11 +189,12 @@
                 //Fixed out of range exeption when choose to continue to play (not to exit from the game)
                 paddlePositionX = 18;
                 ballPositionY = PlaygroundHeight - 3;
+                ballPositionX = paddlePositionX + 3;
                 this.GameStart();
             }
             else if (curChoiceOption == 2)
             {
-                Options(); // not yet implemented
+                this.Options(); // not yet implemented
             }
             else if (curChoiceOption == 3)
             {
