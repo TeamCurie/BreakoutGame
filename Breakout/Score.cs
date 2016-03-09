@@ -67,10 +67,10 @@
         {
             if (this.topGamersRanklist.Count > 0)
             {
-                Console.SetCursorPosition(13, 16);
                 int i = 0;
                 foreach (var topGamer in this.topGamersRanklist.Reverse())
                 {
+                    Console.SetCursorPosition(13, 16 + i);
                     Console.WriteLine(
                         $"{i + 1}. { topGamer.Value } -> { topGamer.Key }");
                     i++;
