@@ -4,6 +4,6 @@
     {
         string GamerName { get; set; }
 
-        int GamerPoints { get; }
+        int GamerPoints { get; set; }
     }
 }

@@ -15,7 +15,7 @@
         private const int PlaygroundHeight = 35;
         private const int PaddleWidth = 7;
         private const char BallSymbol = '*';
-        
+
         private static int paddlePositionX = 18; //Paddle x-coordinate starting position; y-coordinate is always PlaygroundHeight - 2
                                                  //(i.e. bottom of the screen).
 
@@ -34,7 +34,7 @@
             this.Score = score;
         }
 
-        public Score Score { get; private set; }
+        public Score Score { get; }
 
         public void Run()
         {
@@ -187,7 +187,10 @@
 
             if (curChoiceOption == 1)
             {
-                GameStart();
+                //Fixed out of range exeption when choose to continue to play (not to exit from the game)
+                paddlePositionX = 18;
+                ballPositionY = PlaygroundHeight - 3; 
+                this.GameStart();
             }
             else if (curChoiceOption == 2)
             {
@@ -195,7 +198,8 @@
             }
             else if (curChoiceOption == 3)
             {
-                Console.WriteLine("Highscores:"); // not yet implemented
+                this.Score.PrintHighScores();
+                Environment.Exit(0);
             }
             else if (curChoiceOption == 4)
             {
@@ -381,9 +385,8 @@
                 }
                 else
                 {
-                    Score.SaveScore();
-
-                    MainMenu();
+                    this.Score.SaveScore();
+                    this.MainMenu();
                     //Environment.Exit(0); // Terminates the main thread, without any exception thrown, i.e. exits the program.
                 }
             }

@@ -11,6 +11,7 @@
         private bool gamerStartsTheGame = true;
 
         private bool gamerEndsTheGameSuccessfully = false;
+        private int gamerPoints;
 
         public Gamer()
         {
@@ -43,17 +44,17 @@
         {
             get 
             {
-                return this.GamerPoints;
+                return this.gamerPoints;
             }
 
-            private set 
+            set 
             {
                 if (value < 0)
                 {
                     value = 0;
                 }
 
-                this.GamerPoints = value;
+                this.gamerPoints = value;
             }
         }
 
