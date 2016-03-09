@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using Breakout.Contracts;
 
@@ -9,18 +10,21 @@
     {
         private const int TopGamersRanklistCount = 5;
 
-        private readonly List<IGamer> topGamersRanklist; 
+        private readonly SortedDictionary<int, IGamer> topGamersRanklist; 
 
         private Gamer currentGamer;
 
-        public Score(Gamer gamer)
+        private int points;
+
+        public Score(IGamer gamer)
         {
+            this.points = 0;
             this.CurrentGamer = gamer;
-            this.topGamersRanklist = new List<IGamer>(TopGamersRanklistCount);
+            this.topGamersRanklist = new SortedDictionary<int, IGamer>();
         }
         
-        public Gamer CurrentGamer { get; private set; }
-
+        public IGamer CurrentGamer { get; private set; }
+        // TODO : List -> Dictionary
         private static void PrintHighScores(List<IGamer> gamerRatingList)
         {
             Console.WriteLine("Score: ");
@@ -40,7 +44,17 @@
 
         public void SaveScore()
         {
-            
+            Console.Clear();
+            Console.WriteLine("Game Over!"); // The ball did not land on the paddle.
+            Console.WriteLine("Your score: {0}", this.points);
+            Console.Write("Enter you nickname to save the score: ");
+            this.CurrentGamer.GamerName = Console.ReadLine();
+            Console.Clear();
+        }
+
+        public void UpdateCurrentScore()
+        {
+            this.points++;
         }
     }
 }

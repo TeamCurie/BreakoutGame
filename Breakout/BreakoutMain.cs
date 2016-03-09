@@ -1,10 +1,15 @@
 ﻿namespace Breakout
 {
+    using Breakout.Contracts;
+
     public class BreakoutMain
     {
         public static void Main()
         {
-            Engine engine = new Engine();
+            IGamer currentGamer = new Gamer();
+            Score score = new Score(currentGamer);
+            Engine engine = new Engine(score);
+
             engine.Run();
         }
     }

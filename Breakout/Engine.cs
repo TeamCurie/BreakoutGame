@@ -15,7 +15,7 @@
         private const int PlaygroundHeight = 35;
         private const int PaddleWidth = 7;
         private const char BallSymbol = '*';
-        private static int points = 0; //
+        
         private static int paddlePositionX = 18; //Paddle x-coordinate starting position; y-coordinate is always PlaygroundHeight - 2
                                                  //(i.e. bottom of the screen).
 
@@ -28,6 +28,13 @@
 
         private static IWall wallOfBricks;
         private static IFillingPattern fillingPattern;
+
+        public Engine(Score score)
+        {
+            this.Score = score;
+        }
+
+        public Score Score { get; private set; }
 
         public void Run()
         {
@@ -43,7 +50,7 @@
             }
         }
 
-        private static void GameStart()
+        private void GameStart()
         {
             // fillingPattern = new BasicPattern();
             fillingPattern = new ZigZagPattern();
@@ -71,7 +78,7 @@
             }
         }
 
-        private static void MainMenu()
+        private void MainMenu()
         {
             int curChoiceOption = 1;
 
@@ -327,7 +334,7 @@
             }
         }
 
-        private static void ChangeBallPosition()
+        private void ChangeBallPosition()
         {
             switch (ballDirection)
             {
@@ -374,12 +381,8 @@
                 }
                 else
                 {
-                    Console.Clear();
-                    Console.WriteLine("Game Over!"); // The ball did not land on the paddle.
-                    Console.WriteLine("Your score: {0}", points);
-                    Console.Write("Enter you nickname to save the score: ");
-                    string nickname = Console.ReadLine();
-                    Console.Clear();
+                    Score.SaveScore();
+
                     MainMenu();
                     //Environment.Exit(0); // Terminates the main thread, without any exception thrown, i.e. exits the program.
                 }
@@ -443,7 +446,7 @@
 
                             BallDirectionAfterWallCollision();
 
-                            points++;
+                            this.Score.UpdateCurrentScore();
                         }
                     }
                 }
@@ -455,7 +458,7 @@
             if (ballDirection == Directions.Up)
             {
                 // From upward direction the ball bounces off downward.
-                ballDirection = Directions.Down; 
+                ballDirection = Directions.Down;
             }
             else if (ballDirection == Directions.Down)
             {
@@ -466,7 +469,7 @@
             {
                 // From upward right direction the ball bounces off downward right.
                 ballDirection = Directions.DownAndRight;
-            }          
+            }
             else if (ballDirection == Directions.UpAndLeft)
             {
                 // From upward left direction the ball bounces off downward left.
@@ -475,7 +478,7 @@
             else if (ballDirection == Directions.DownAndLeft)
             {
                 // From downward left direction the ball bounces off upward left.
-                ballDirection = Directions.UpAndLeft; 
+                ballDirection = Directions.UpAndLeft;
             }
             else if (ballDirection == Directions.DownAndRight)
             {
