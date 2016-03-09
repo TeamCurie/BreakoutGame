@@ -1,6 +1,6 @@
 ﻿namespace Breakout
 {
-    using Breakout.Contracts;
+    using Contracts;
 
     public class BreakoutMain
     {
