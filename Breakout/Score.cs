@@ -21,7 +21,7 @@
             this.topGamersRanklist = new SortedDictionary<int, string>();
         }
 
-        public IGamer CurrentGamer { get; }
+        public IGamer CurrentGamer { get; private set; }
 
         public void SaveScore()
         {
@@ -72,7 +72,7 @@
                 {
                     Console.SetCursorPosition(13, 16 + i);
                     Console.WriteLine(
-                        $"{i + 1}. { topGamer.Value } -> { topGamer.Key }");
+                        "{0}. {1} -> {2}", i + 1, topGamer.Value, topGamer.Key);
                     i++;
                 }
             }

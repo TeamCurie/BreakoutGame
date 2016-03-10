@@ -13,13 +13,13 @@
             this.FillingPattern = pattern;
         }
 
-        public int Height { get; }
+        public int Height { get; private set; }
 
-        public int Width { get; }
+        public int Width { get; private set; }
 
-        public IBrick[,] FilledWall { get; }
+        public IBrick[,] FilledWall { get; private set; }
 
-        public IFillingPattern FillingPattern { get; }
+        public IFillingPattern FillingPattern { get; private set; }
 
         public void DrawWall()
         {

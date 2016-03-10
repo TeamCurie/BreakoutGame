@@ -33,7 +33,7 @@
             this.Score = score;
         }
 
-        public Score Score { get; }
+        public Score Score { get; private set; }
 
         public void Run()
         {
