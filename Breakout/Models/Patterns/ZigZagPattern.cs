@@ -14,7 +14,7 @@
             {
                 for (int column = 0; column < wall.Width; column++)
                 {
-                    wall.FilledWall[row, column] = new Brick(row, column);
+                    wall.FilledWall[row, column] = new Brick(row, column, false);
 
                     if (counter % 2 == 0)
                     {

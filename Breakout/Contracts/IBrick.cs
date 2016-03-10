@@ -6,6 +6,8 @@
 
         int PositionY { get; set; }
 
+        bool IsColored { get; set; }
+
         char getSymbol();
 
         void setInvisible();

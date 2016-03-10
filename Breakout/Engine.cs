@@ -53,8 +53,8 @@
 
         private void GameStart()
         {
-            // fillingPattern = new BasicPattern();
-            fillingPattern = new ZigZagPattern();
+            fillingPattern = new BasicPattern();
+           // fillingPattern = new ZigZagPattern();
 
             wallOfBricks = new Wall(4, PlaygroundWidth, fillingPattern);
 

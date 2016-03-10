@@ -30,7 +30,17 @@
             {
                 for (int j = 0; j < this.FilledWall.GetLength(1); j++)
                 {
-                    Console.Write(this.FilledWall[i, j].getSymbol());
+                    if (this.FilledWall[i, j].IsColored)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write(this.FilledWall[i, j].getSymbol());
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.Write(this.FilledWall[i, j].getSymbol());
+                    }
+                   
                 }
             } 
         }
