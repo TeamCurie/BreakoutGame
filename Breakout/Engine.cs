@@ -47,7 +47,7 @@
             {
                 this.MainMenu();
             }
-        }
+        } 
 
         private void GameStart()
         {
@@ -59,6 +59,7 @@
             DrawPaddle();
             wallOfBricks.DrawWall();
             DrawBall();
+            Console.Write("\b \b");
 
             while (true)
             {
@@ -66,10 +67,18 @@
                 {
                     ConsoleKeyInfo pressedKey = Console.ReadKey();
                     ChangePaddlePosition(pressedKey);
+                    Console.Clear();
+                    DrawPaddle();
                 }
 
+                Console.Write("\b \b");
                 this.ChangeBallPosition();
-                Console.Clear();
+                if (ballPositionX == PlaygroundWidth - 1)
+                {
+                    Console.Clear();
+                    DrawPaddle();
+                }
+
                 DrawPaddle();
                 wallOfBricks.UpdateWall();
                 DrawBall();
