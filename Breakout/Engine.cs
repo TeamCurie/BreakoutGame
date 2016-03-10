@@ -192,11 +192,12 @@
                 paddlePositionX = 18;
                 ballPositionY = PlaygroundHeight - 3;
                 ballPositionX = paddlePositionX + 3;
+                Console.ForegroundColor = ConsoleColor.White;
                 this.GameStart();
             }
             else if (curChoiceOption == 2)
             {
-                this.Options(); // not yet implemented
+                this.Options();
             }
             else if (curChoiceOption == 3)
             {
@@ -620,11 +621,8 @@
 
         private static void DrawPaddle()
         {
-            for (int i = 0; i < PlaygroundWidth; i++)
-            {
-                Console.SetCursorPosition(i, PlaygroundHeight - 2);
-                Console.Write(' ');
-            }
+            Console.SetCursorPosition(0, PlaygroundHeight - 2);
+            Console.Write(new string(' ', PlaygroundWidth));
             
             for (int i = 0; i < PaddleWidth; i++)
             {
