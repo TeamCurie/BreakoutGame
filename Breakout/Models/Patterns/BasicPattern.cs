@@ -6,16 +6,6 @@
 
     internal class BasicPattern : IFillingPattern
     {
-        /*
-        public static int[,] fillColor = new int[4, 40]
-        {
-            {0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-        };
-        */
-
         public void FillWall(IWall wall)
         {
             Console.SetCursorPosition(0, 1);
@@ -24,7 +14,14 @@
             {
                 for (int column = 0; column < wall.Width; column++)
                 {
-                    wall.FilledWall[row, column] = new Brick(row, column, false);
+                    if (column <= 1 || column >= wall.Width - 2 || row == 0 || row == wall.Height - 1)
+                    {
+                        wall.FilledWall[row, column] = new Brick(row, column, false);
+                    }
+                    else
+                    {
+                        wall.FilledWall[row, column] = new Brick(row, column, true);
+                    }
                 }
             }
         }

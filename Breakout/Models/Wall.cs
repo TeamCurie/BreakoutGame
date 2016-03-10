@@ -32,7 +32,7 @@
                 {
                     if (this.FilledWall[i, j].IsColored)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.DarkCyan;
                         Console.Write(this.FilledWall[i, j].getSymbol());
                     }
                     else
@@ -42,7 +42,9 @@
                     }
                    
                 }
-            } 
+            }
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         public void UpdateWall(int x, int y)

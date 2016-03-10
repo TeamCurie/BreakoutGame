@@ -14,9 +14,18 @@
             {
                 for (int column = 0; column < wall.Width; column++)
                 {
-                    wall.FilledWall[row, column] = new Brick(row, column, false);
+                   if (column <= 1 || column >= wall.Width - 2 || row == 0 || row == wall.Height - 1)
+                    {
+                        wall.FilledWall[row, column] = new Brick(row, column, false);
+                    }
+                    else
+                    {
+                        wall.FilledWall[row, column] = new Brick(row, column, true);
+                    }
 
-                    if (counter % 2 == 0)
+                    if (counter % 2 == 0 
+                        || (row == wall.Height - 1 && column == 0)
+                        || (row == wall.Height - 1 && column == wall.Width - 1))
                     {
                         wall.FilledWall[row, column].setInvisible();
                     }
