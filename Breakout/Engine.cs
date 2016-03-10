@@ -105,6 +105,8 @@
                 if (curChoiceOption == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -117,6 +119,8 @@
                 if (curChoiceOption == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -129,6 +133,8 @@
                 if (curChoiceOption == 3)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -141,6 +147,8 @@
                 if (curChoiceOption == 4)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -241,6 +249,8 @@
                 if (curChoiceOption == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -253,6 +263,8 @@
                 if (curChoiceOption == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -265,6 +277,8 @@
                 if (curChoiceOption == 3)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -277,6 +291,8 @@
                 if (curChoiceOption == 4)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -371,6 +387,8 @@
                 if (curChoiceOption == 1)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
@@ -383,6 +401,8 @@
                 if (curChoiceOption == 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
+
+                    Console.Beep(150, 22);
                 }
                 else
                 {
