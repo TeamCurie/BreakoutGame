@@ -500,21 +500,21 @@
                 if ((ballPositionX >= paddlePositionX + 2) &&
                     (ballPositionX <= paddlePositionX + 4)) // The middle 3 "_" symbols.
                 {
-                    Console.Beep(180, 50);
+                    new Thread(() => Console.Beep(180, 50)).Start();
 
                     ballDirection = Directions.Up; // Bouncing up.
                 }
                 else if ((ballPositionX >= paddlePositionX) &&
                     (ballPositionX <= paddlePositionX + 1)) // The left 2 "_" symbols.
                 {
-                    Console.Beep(180, 50);
+                    new Thread(() => Console.Beep(180, 50)).Start();
 
                     ballDirection = Directions.UpAndLeft; // Bouncing up and to the left.
                 }
                 else if ((ballPositionX >= paddlePositionX + 5) &&
                     (ballPositionX <= paddlePositionX + 6)) // The right 2 "_" symbols.
                 {
-                    Console.Beep(180, 50);
+                    new Thread(() => Console.Beep(180, 50)).Start();
 
                     ballDirection = Directions.UpAndRight; // Bouncing up and to the right.
                 }
@@ -530,19 +530,19 @@
             {
                 if (ballDirection == Directions.Up)
                 {
-                    Console.Beep(200, 250);
+                    new Thread(() => Console.Beep(200, 50)).Start();
 
                     ballDirection = Directions.Down; // From upward direction the ball bounces off downward.
                 }
                 else if (ballDirection == Directions.UpAndRight)
                 {
-                    Console.Beep(200, 250);
+                    new Thread(() => Console.Beep(200, 50)).Start();
 
                     ballDirection = Directions.DownAndRight; // From upward right direction the ball bounces off downward right.
                 }
                 else if (ballDirection == Directions.UpAndLeft)
                 {
-                    Console.Beep(200, 250);
+                    new Thread(() => Console.Beep(200, 50)).Start();
 
                     ballDirection = Directions.DownAndLeft; // From upward left direction the ball bounces off downward left.
                 }
@@ -552,13 +552,13 @@
             {
                 if (ballDirection == Directions.UpAndLeft)
                 {
-                    Console.Beep(200, 250);
+                    new Thread(() => Console.Beep(200, 50)).Start();
 
                     ballDirection = Directions.UpAndRight; // From upward left direction the ball bounces off upward right.
                 }
                 else if (ballDirection == Directions.DownAndLeft)
                 {
-                    Console.Beep(200, 250);
+                    new Thread(() => Console.Beep(200, 50)).Start();
 
                     ballDirection = Directions.DownAndRight; // From downward left direction the ball bounces off downward right.
                 }
@@ -568,13 +568,13 @@
             {
                 if (ballDirection == Directions.UpAndRight)
                 {
-                    Console.Beep(200, 250);
+                    new Thread(() => Console.Beep(200, 50)).Start();
 
                     ballDirection = Directions.UpAndLeft; // From upward right direction the ball bounces off upward left.
                 }
                 else if (ballDirection == Directions.DownAndRight)
                 {
-                    Console.Beep(200, 250);
+                    new Thread(() => Console.Beep(200, 50)).Start();
 
                     ballDirection = Directions.DownAndLeft; // From downward right direction the ball bounces off downward left.
                 }
@@ -596,7 +596,7 @@
                         {
                             wallOfBricks.FilledWall[i, j].setInvisible();
 
-                            Console.Beep(450, 280);
+                            new Thread(() => Console.Beep(450, 100)).Start();
 
                             BallDirectionAfterWallCollision();
 
