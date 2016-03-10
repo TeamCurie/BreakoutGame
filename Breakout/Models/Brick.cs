@@ -19,11 +19,11 @@
             this.IsColored = isColored;
         }
 
-        public int PositionX { get; }
+        public int PositionX { get; private set; }
 
-        public int PositionY { get; }
+        public int PositionY { get; private set; }
 
-        public bool IsColored { get; }
+        public bool IsColored { get; private set; }
 
         public char getSymbol()
         {
