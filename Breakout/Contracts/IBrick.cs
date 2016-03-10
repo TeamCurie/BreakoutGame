@@ -2,11 +2,11 @@
 {
     public interface IBrick
     {
-        int PositionX { get; set; }
+        int PositionX { get; }
 
-        int PositionY { get; set; }
+        int PositionY { get; }
 
-        bool IsColored { get; set; }
+        bool IsColored { get; }
 
         char getSymbol();
 

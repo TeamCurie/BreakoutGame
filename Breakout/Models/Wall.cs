@@ -13,13 +13,13 @@
             this.FillingPattern = pattern;
         }
 
-        public int Height { get; private set; }
+        public int Height { get; }
 
-        public int Width { get; private set; }
+        public int Width { get; }
 
-        public IBrick[,] FilledWall { get; private set; }
+        public IBrick[,] FilledWall { get; }
 
-        public IFillingPattern FillingPattern { get; private set; }
+        public IFillingPattern FillingPattern { get; }
 
         public void DrawWall()
         {
@@ -40,7 +40,6 @@
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write(this.FilledWall[i, j].getSymbol());
                     }
-                   
                 }
             }
 
@@ -49,16 +48,6 @@
 
         public void UpdateWall(int x, int y)
         {
-            //Console.SetCursorPosition(0, 1);
-            
-            //for (int i = 0; i < this.FilledWall.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < this.FilledWall.GetLength(1); j++)
-            //    {
-            //        Console.Write(this.FilledWall[i,j].getSymbol());
-            //    }
-            //} 
-
             Console.SetCursorPosition(x, y);
             Console.Write(' ');
         }

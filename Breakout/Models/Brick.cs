@@ -11,19 +11,19 @@
 
         public Brick(int positionY, int positionX, bool isColored)
         {
-            isVisible = true;
-            symbol = '#';
+            this.isVisible = true;
+            this.symbol = '#';
 
             this.PositionY = positionY;
             this.PositionX = positionX;
             this.IsColored = isColored;
         }
 
-        public int PositionX { get; set; }
+        public int PositionX { get; }
 
-        public int PositionY { get; set; }
+        public int PositionY { get; }
 
-        public bool IsColored { get; set; }
+        public bool IsColored { get; }
 
         public char getSymbol()
         {
@@ -32,13 +32,13 @@
 
         public void setInvisible()
         {
-            isVisible = false;
+            this.isVisible = false;
             this.symbol = ' ';
         }
 
         public bool getVisibility()
         {
-            return isVisible;
+            return this.isVisible;
         }
     }
 }
