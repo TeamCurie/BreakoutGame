@@ -439,6 +439,7 @@
             switch (ballDirection)
             {
                 case Directions.Up: // Up
+                    previousBallPositionX = ballPositionX;
                     previousBallPositionY = ballPositionY;
                     ballPositionY--;
                     break;
@@ -455,6 +456,7 @@
                     ballPositionY--;
                     break;
                 case Directions.Down: // Down
+                    previousBallPositionX = ballPositionX;
                     previousBallPositionY = ballPositionY;
                     ballPositionY++;
                     break;
