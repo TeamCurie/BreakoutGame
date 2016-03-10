@@ -12,6 +12,6 @@
 
         void DrawWall();
 
-        void UpdateWall();
+        void UpdateWall(int x, int y);
     }
 }

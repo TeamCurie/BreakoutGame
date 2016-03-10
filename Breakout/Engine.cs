@@ -20,6 +20,8 @@
 
         private static int ballPositionX = paddlePositionX + 3; //Ball x-coordinate starting position.
         private static int ballPositionY = PlaygroundHeight - 2; //Ball y-coordinate starting position.
+        private static int previousBallPositionX = ballPositionX;
+        private static int previousBallPositionY = ballPositionY;
 
         private static int gameSpeed = 100;
 
@@ -67,21 +69,12 @@
                 {
                     ConsoleKeyInfo pressedKey = Console.ReadKey();
                     ChangePaddlePosition(pressedKey);
-                    Console.Clear();
-                    DrawPaddle();
-                }
-
-                Console.Write("\b \b");
-                this.ChangeBallPosition();
-                if (ballPositionX == PlaygroundWidth - 1)
-                {
-                    Console.Clear();
-                    DrawPaddle();
                 }
 
                 DrawPaddle();
-                wallOfBricks.UpdateWall();
+                this.ChangeBallPosition();
                 DrawBall();
+                wallOfBricks.UpdateWall(previousBallPositionX, previousBallPositionY);
                 Thread.Sleep(gameSpeed);
             }
         }
@@ -446,24 +439,34 @@
             switch (ballDirection)
             {
                 case Directions.Up: // Up
+                    previousBallPositionY = ballPositionY;
                     ballPositionY--;
                     break;
                 case Directions.UpAndLeft: // Up left
+                    previousBallPositionX = ballPositionX;
+                    previousBallPositionY = ballPositionY;
                     ballPositionX--;
                     ballPositionY--;
                     break;
                 case Directions.UpAndRight: // Up right
+                    previousBallPositionX = ballPositionX;
+                    previousBallPositionY = ballPositionY;
                     ballPositionX++;
                     ballPositionY--;
                     break;
                 case Directions.Down: // Down
+                    previousBallPositionY = ballPositionY;
                     ballPositionY++;
                     break;
                 case Directions.DownAndRight: // Down right
+                    previousBallPositionX = ballPositionX;
+                    previousBallPositionY = ballPositionY;
                     ballPositionX++;
                     ballPositionY++;
                     break;
                 case Directions.DownAndLeft: // Down left
+                    previousBallPositionX = ballPositionX;
+                    previousBallPositionY = ballPositionY;
                     ballPositionX--;
                     ballPositionY++;
                     break;
@@ -615,6 +618,12 @@
 
         private static void DrawPaddle()
         {
+            for (int i = 0; i < PlaygroundWidth; i++)
+            {
+                Console.SetCursorPosition(i, PlaygroundHeight - 2);
+                Console.Write(' ');
+            }
+            
             for (int i = 0; i < PaddleWidth; i++)
             {
                 Console.SetCursorPosition(paddlePositionX + i, PlaygroundHeight - 2);
@@ -624,6 +633,8 @@
 
         private static void DrawBall()
         {
+            Console.SetCursorPosition(previousBallPositionX, previousBallPositionY);
+            Console.Write(' ');
             Console.SetCursorPosition(ballPositionX, ballPositionY);
             Console.Write(BallSymbol);
         }

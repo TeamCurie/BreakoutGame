@@ -24,19 +24,31 @@
         public void DrawWall()
         {
             FillingPattern.FillWall(this);
-        }
-
-        public void UpdateWall()
-        {
             Console.SetCursorPosition(0, 1);
 
             for (int i = 0; i < this.FilledWall.GetLength(0); i++)
             {
                 for (int j = 0; j < this.FilledWall.GetLength(1); j++)
                 {
-                    Console.Write(this.FilledWall[i,j].getSymbol());
+                    Console.Write(this.FilledWall[i, j].getSymbol());
                 }
             } 
+        }
+
+        public void UpdateWall(int x, int y)
+        {
+            //Console.SetCursorPosition(0, 1);
+            
+            //for (int i = 0; i < this.FilledWall.GetLength(0); i++)
+            //{
+            //    for (int j = 0; j < this.FilledWall.GetLength(1); j++)
+            //    {
+            //        Console.Write(this.FilledWall[i,j].getSymbol());
+            //    }
+            //} 
+
+            Console.SetCursorPosition(x, y);
+            Console.Write(' ');
         }
     }
 }
