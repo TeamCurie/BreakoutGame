@@ -1,7 +1,6 @@
 ﻿namespace Breakout
 {
     using System;
-    using System.Net.Mime;
     using System.Threading;
     using Contracts;
     using Enums;
@@ -34,12 +33,15 @@
         {
             this.Score = score;
         }
-
+        
         public Score Score { get; private set; }
 
         public void Run()
         {
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.Clear();
             Console.CursorVisible = false;
+            
             Console.WindowWidth = PlaygroundWidth;
             Console.WindowHeight = PlaygroundHeight;
             Console.BufferHeight = Console.WindowHeight;
@@ -55,7 +57,6 @@
         {
           //  fillingPattern = new BasicPattern();
             fillingPattern = new ZigZagPattern();
-
             wallOfBricks = new Wall(4, PlaygroundWidth, fillingPattern);
 
             DrawPaddle();
@@ -82,7 +83,7 @@
         private void MainMenu()
         {
             int curChoiceOption = 1;
-
+            
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White;
@@ -106,7 +107,7 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
 
-                    Console.Beep(150, 22);
+                    new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
@@ -120,7 +121,7 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
 
-                    Console.Beep(150, 22);
+                    new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
@@ -134,7 +135,7 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
 
-                    Console.Beep(150, 22);
+                    new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
@@ -148,7 +149,7 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
 
-                    Console.Beep(150, 22);
+                    new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
