@@ -1,7 +1,6 @@
 ﻿namespace Breakout.Models.Patterns
 {
     using System;
-    using System.Diagnostics;
     using Contracts;
 
     internal class BasicPattern : IFillingPattern

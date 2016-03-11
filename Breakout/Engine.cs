@@ -86,7 +86,7 @@
             
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Cyan;
 
                 Console.SetCursorPosition(22, 5);
                 Console.WriteLine("______                _               _   ");
@@ -105,13 +105,13 @@
                 // all it does is coloring the current highlighted answer and printing the answers
                 if (curChoiceOption == 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 14);
@@ -119,13 +119,13 @@
 
                 if (curChoiceOption == 2)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 15);
@@ -133,13 +133,13 @@
 
                 if (curChoiceOption == 3)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 16);
@@ -147,13 +147,13 @@
 
                 if (curChoiceOption == 4)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     new Thread(() => Console.Beep(150, 22)).Start();
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 17);
@@ -201,7 +201,7 @@
                 paddlePositionX = 18;
                 ballPositionY = PlaygroundHeight - 3;
                 ballPositionX = paddlePositionX + 3;
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 this.GameStart();
             }
             else if (curChoiceOption == 2)
@@ -224,7 +224,7 @@
 
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Cyan;
 
                 Console.SetCursorPosition(22, 5);
                 Console.WriteLine(" _____       _   _                 ");
@@ -249,13 +249,13 @@
                 Console.WriteLine("Game speed: ");
                 if (curChoiceOption == 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     Console.Beep(150, 22);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 14);
@@ -263,13 +263,13 @@
 
                 if (curChoiceOption == 2)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     Console.Beep(150, 22);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 15);
@@ -277,13 +277,13 @@
 
                 if (curChoiceOption == 3)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     Console.Beep(150, 22);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 16);
@@ -291,13 +291,13 @@
 
                 if (curChoiceOption == 4)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     Console.Beep(150, 22);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(35, 17);
@@ -362,7 +362,7 @@
 
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Cyan;
 
                 Console.SetCursorPosition(13, 5);
                 Console.WriteLine(" _    _ _       _");
@@ -387,13 +387,13 @@
 
                 if (curChoiceOption == 1)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     Console.Beep(150, 22);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(40, 23);
@@ -401,13 +401,13 @@
 
                 if (curChoiceOption == 2)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
 
                     Console.Beep(150, 22);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                 }
 
                 Console.SetCursorPosition(40, 24);
@@ -531,19 +531,19 @@
             {
                 if (ballDirection == Directions.Up)
                 {
-                    new Thread(() => Console.Beep(200, 50)).Start();
+                    new Thread(() => Console.Beep(200, 250)).Start();
 
                     ballDirection = Directions.Down; // From upward direction the ball bounces off downward.
                 }
                 else if (ballDirection == Directions.UpAndRight)
                 {
-                    new Thread(() => Console.Beep(200, 50)).Start();
+                    new Thread(() => Console.Beep(200, 250)).Start();
 
                     ballDirection = Directions.DownAndRight; // From upward right direction the ball bounces off downward right.
                 }
                 else if (ballDirection == Directions.UpAndLeft)
                 {
-                    new Thread(() => Console.Beep(200, 50)).Start();
+                    new Thread(() => Console.Beep(200, 250)).Start();
 
                     ballDirection = Directions.DownAndLeft; // From upward left direction the ball bounces off downward left.
                 }
@@ -559,7 +559,7 @@
                 }
                 else if (ballDirection == Directions.DownAndLeft)
                 {
-                    new Thread(() => Console.Beep(200, 50)).Start();
+                    new Thread(() => Console.Beep(200, 250)).Start();
 
                     ballDirection = Directions.DownAndRight; // From downward left direction the ball bounces off downward right.
                 }
@@ -569,13 +569,13 @@
             {
                 if (ballDirection == Directions.UpAndRight)
                 {
-                    new Thread(() => Console.Beep(200, 50)).Start();
+                    new Thread(() => Console.Beep(200, 250)).Start();
 
                     ballDirection = Directions.UpAndLeft; // From upward right direction the ball bounces off upward left.
                 }
                 else if (ballDirection == Directions.DownAndRight)
                 {
-                    new Thread(() => Console.Beep(200, 50)).Start();
+                    new Thread(() => Console.Beep(200, 250)).Start();
 
                     ballDirection = Directions.DownAndLeft; // From downward right direction the ball bounces off downward left.
                 }
