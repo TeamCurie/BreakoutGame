@@ -55,7 +55,7 @@
 
         private void GameStart()
         {
-          //  fillingPattern = new BasicPattern();
+            // fillingPattern = new BasicPattern();
             fillingPattern = new ZigZagPattern();
             wallOfBricks = new Wall(4, PlaygroundWidth, fillingPattern);
 
@@ -199,8 +199,9 @@
             {
                 //Fixed out of range exeption when choose to continue to play (not to exit from the game)
                 paddlePositionX = 18;
-                ballPositionY = PlaygroundHeight - 3;
+                ballPositionY = PlaygroundHeight - 2;
                 ballPositionX = paddlePositionX + 3;
+                ballDirection = Directions.Up;
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 this.GameStart();
             }
